@@ -1,0 +1,6 @@
+2025-07-22 12:03:35.2975 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Property 'type' has blank value, for element 'target(Name=logfile)' in section 'targets'
+2025-07-22 12:03:35.3102 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.
+2025-07-22 12:07:35.1089 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Property 'type' has blank value, for element 'target(Name=logfile)' in section 'targets'
+2025-07-22 12:07:35.1321 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.
+2025-07-22 12:10:57.0804 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Property 'type' has blank value, for element 'target(Name=logfile)' in section 'targets'
+2025-07-22 12:10:57.0950 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.

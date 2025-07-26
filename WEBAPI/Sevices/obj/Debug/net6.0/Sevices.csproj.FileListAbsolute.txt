@@ -1,0 +1,4 @@
+C:\Users\ahmet\source\repos\PersonelUygulaması\Sevices\obj\Debug\net6.0\Sevices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ahmet\source\repos\PersonelUygulaması\Sevices\obj\Debug\net6.0\Sevices.AssemblyInfoInputs.cache
+C:\Users\ahmet\source\repos\PersonelUygulaması\Sevices\obj\Debug\net6.0\Sevices.AssemblyInfo.cs
+C:\Users\ahmet\source\repos\PersonelUygulaması\Sevices\obj\Debug\net6.0\Sevices.csproj.CoreCompileInputs.cache
