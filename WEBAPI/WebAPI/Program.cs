@@ -38,6 +38,14 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy => policy.WithOrigins("http://localhost:5173")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
 // Registering IEquipmentService directly, assuming it is implemented in the ServiceManager
 
 
@@ -68,7 +76,7 @@ if (app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowReactApp");
 app.UseAuthentication();
 app.UseAuthorization();
 

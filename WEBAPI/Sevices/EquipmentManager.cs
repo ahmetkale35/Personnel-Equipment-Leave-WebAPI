@@ -24,7 +24,7 @@ namespace Services
         {
             var equipmentRequest = _mapper.Map<EquipmentRequests>(equipmentDtoInsertion);
             _manager.Equipment.CreateOneEquipment(equipmentRequest);
-            _manager.Save();
+            _manager.SaveAsync();
             return _mapper.Map<EquipmentDto>(equipmentRequest);
         }
 
@@ -35,7 +35,7 @@ namespace Services
                 throw new EquipmentNotFoundException(id);
 
             _manager.Equipment.DeleteOneEquipment(entity);
-            _manager.Save();
+            _manager.SaveAsync();
         }
 
         public IEnumerable<EquipmentDto> GetAllEquipments(bool trackChanges)
@@ -99,7 +99,7 @@ namespace Services
 
             _mapper.Map(equipmentDto, entity);
             _manager.Equipment.UpdateOneEquipment(entity);
-            _manager.Save();
+            _manager.SaveAsync();
         }
     }
 }

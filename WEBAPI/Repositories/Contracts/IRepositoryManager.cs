@@ -6,6 +6,6 @@ namespace Repositories.Contracts
         ILeaveRepository Leave {  get; }
 
         IEquipmentRepository Equipment { get; }
-        void Save();
+        Task SaveAsync();
     }
 }
