@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2FwUp4bApC0=",
+  "dgSpecHash": "RX7ohUzKsx4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj",
+  "projectFilePath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.1.1\\automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",
@@ -71,9 +71,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'System.IdentityModel.Tokens.Jwt' 6.14.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
-      "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj",
+      "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj",
+      "filePath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj",
       "libraryId": "System.IdentityModel.Tokens.Jwt",
       "targetGraphs": [
         "net6.0"
