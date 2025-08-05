@@ -39,6 +39,7 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 
 
+// Configure CORS to allow requests from the React app running on localhost:5173
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
