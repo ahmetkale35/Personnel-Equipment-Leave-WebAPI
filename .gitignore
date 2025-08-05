@@ -1,0 +1,21 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.vcxproj.user
+*.aps
+*.ncb
+*.opendb
+*.ide
+
+# Copilot Cache & Indices
+CopilotIndices/
+.vscode/
+.vscode/*
+.vscode/settings.json
+
+# Logs
+*.log
+logs/
