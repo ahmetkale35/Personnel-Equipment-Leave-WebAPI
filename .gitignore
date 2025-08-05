@@ -19,3 +19,7 @@ CopilotIndices/
 # Logs
 *.log
 logs/
+
+# Build output folders
+bin/
+obj/
