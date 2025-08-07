@@ -27,6 +27,12 @@ namespace WebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Adet")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Atanan")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("EquipmentItems");
@@ -222,21 +228,21 @@ namespace WebAPI.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "dd1e86d9-d8e1-4ca9-be02-f03d19f133e1",
+                            ConcurrencyStamp = "21260925-ce03-4317-a67f-47ed3e32ce86",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "30d04050-1d02-48a1-8384-430f771515ea",
+                            ConcurrencyStamp = "94363a54-9dde-4a40-8faf-d15c1da99378",
                             Name = "It",
                             NormalizedName = "IT"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "64502d59-1218-4ace-9495-60392acff2d4",
+                            ConcurrencyStamp = "89e6067f-e583-4ba9-aa20-402b917b9071",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });

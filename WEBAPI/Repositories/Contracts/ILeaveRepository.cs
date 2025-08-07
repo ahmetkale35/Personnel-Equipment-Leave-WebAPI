@@ -6,7 +6,7 @@ namespace Repositories.Contracts
     public interface ILeaveRepository : IRepositoryBase<LeaveRequest>
     {
         IQueryable<LeaveRequest> GetAllLeaves(bool trackChanges);
-        Task<LeaveRequest> GetOneLeaveByIdAsync(int id, bool trackChanges);
+        IQueryable<LeaveRequest> GetOneLeaveById(int id, bool trackChanges);
 
         void CreateOneLeave(LeaveRequest leave);
         void UpdateOneLeave(LeaveRequest leave);
@@ -14,11 +14,11 @@ namespace Repositories.Contracts
 
 
         // Gets all leaves with their relations (e.g., User and LeaveType)
-        Task<IEnumerable<LeaveRequest>> GetAllLeavesWithRelationsAsync(bool trackChanges);
+        IEnumerable<LeaveRequest> GetAllLeavesWithRelations(bool trackChanges);
 
 
         // Gets a single leave by ID with its relations
-        Task<LeaveRequest?> GetOneLeaveByIDWithRelationsAsync(int id, bool trackChanges);
+        LeaveRequest GetOneLeaveByIDWithRelations(int id, bool trackChanges);
 
 
 

@@ -1,4 +1,5 @@
 ﻿
+using Entities.Models;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -11,6 +12,9 @@ namespace Entities.DataTransferObject.EquipmentDTO
 
         [Required(ErrorMessage = "EquipmentItemId alanı zorunludur.")]
         public int EquipmentItemId { get; init; }
+
+       // [Required(ErrorMessage = "EquipmentItem alanı zorunludur.")]
+        public EquipmentItem? EquipmentItem { get; set; }
 
         [Required(ErrorMessage = "Adet alanı zorunludur.")]
         [Range(1, int.MaxValue, ErrorMessage = "Adet en az 1 olmalıdır.")]

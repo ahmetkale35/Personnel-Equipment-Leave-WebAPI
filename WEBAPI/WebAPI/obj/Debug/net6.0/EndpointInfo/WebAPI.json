@@ -89,6 +89,30 @@
         }
       }
     },
+    "/api/Equipment/GetAllApprovedEquipments": {
+      "get": {
+        "tags": [
+          "Equipment"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Equipment/GetAllStocks": {
+      "get": {
+        "tags": [
+          "Equipment"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Equipment/GetOneEquipment/{id}": {
       "get": {
         "tags": [
@@ -541,6 +565,9 @@
             "type": "integer",
             "format": "int32"
           },
+          "equipmentItem": {
+            "$ref": "#/components/schemas/EquipmentItem"
+          },
           "adet": {
             "maximum": 2147483647,
             "minimum": 1,
@@ -586,6 +613,9 @@
             "type": "integer",
             "format": "int32"
           },
+          "equipmentItem": {
+            "$ref": "#/components/schemas/EquipmentItem"
+          },
           "adet": {
             "maximum": 2147483647,
             "minimum": 1,
@@ -606,6 +636,28 @@
           "talepTarihi": {
             "type": "string",
             "format": "date"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EquipmentItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ad": {
+            "type": "string",
+            "nullable": true
+          },
+          "adet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "atanan": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

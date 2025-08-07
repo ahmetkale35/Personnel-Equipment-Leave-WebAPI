@@ -18,9 +18,9 @@ namespace Repositories.EFCore
 
         public IEquipmentRepository Equipment => _equipmentRepository.Value;
 
-        public async Task SaveAsync()
+        public void Save()
         {
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

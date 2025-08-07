@@ -825,11 +825,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -21,9 +21,12 @@ namespace Repositories.EFCore
 
         public void DeleteOneEquipment(EquipmentRequests equipment) => Delete(equipment);
 
-        public IQueryable<EquipmentRequests> GetAllEquioments(bool trackChanges) =>
-            FindAll(trackChanges);
-
+        //public IQueryable<EquipmentRequests> GetAllApprovedEquipments(bool trackChanges)
+        //{
+        //    return trackChanges
+        //        ? FindByCondition(e => e.Durum.Equals("Onaylandı", StringComparison.OrdinalIgnoreCase), trackChanges)
+        //        : FindByCondition(e => e.Durum.Equals("Onaylandı", StringComparison.OrdinalIgnoreCase), false);
+        //}
 
         public IEnumerable<EquipmentRequests> GetAllEquipmentsWithRelations(bool trackChanges) =>
     trackChanges
@@ -60,7 +63,28 @@ namespace Repositories.EFCore
                     .FirstOrDefault(er => er.Id == id);
         }
 
+
+
         public void UpdateOneEquipment(EquipmentRequests equipment) => Update(equipment);
 
+
+        public int stockCount(int id, bool trackChanges)
+        {
+            var equipment = trackChanges
+                ? _context.EquipmentItems.FirstOrDefault(e => e.Id == id)
+                : _context.EquipmentItems.AsNoTracking().FirstOrDefault(e => e.Id == id);
+            return equipment?.Adet ?? 0;
+        }
+
+        public IQueryable<EquipmentRequests> GetAllEquipments(bool trackChanges) =>
+           FindAll(trackChanges);
+
+        public IQueryable<EquipmentItem> GetAllStocks(bool trackChanges)
+        {
+            return trackChanges
+                ? _context.EquipmentItems
+                : _context.EquipmentItems.AsNoTracking();
+
+        }
     }
 }

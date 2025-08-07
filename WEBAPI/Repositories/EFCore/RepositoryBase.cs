@@ -31,6 +31,12 @@ namespace Repositories.EFCore
             _context.Set<T>() : 
             _context.Set<T>().AsNoTracking();
 
+        //public IQueryable<T> FindAllStocks(bool trackChanges) =>
+        //    !trackChanges ?
+        //    _context.Set<T>() :
+        //    _context.Set<T>().AsNoTracking();
+
+
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expresion, bool trackChanges) => 
             !trackChanges ?

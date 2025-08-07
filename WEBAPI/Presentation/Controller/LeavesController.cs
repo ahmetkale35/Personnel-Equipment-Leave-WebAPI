@@ -30,18 +30,18 @@ namespace Presentation.Controller
        
         [HttpGet]
         [Route("GetAllLeaves")]
-        public async Task<ActionResult> GetAllLeavesAsync()
+        public IActionResult GetAllLeaves()
         {
-            var leaves = await _manager.Leave.GetAllLeavesWithRelationsAsync(false);
+            var leaves = _manager.Leave.GetAllLeavesWithRelations(false);
             return Ok(leaves);
         }
 
         [Authorize]
         [HttpGet]
         [Route("GetOneLeave/{id:int}")]
-        public async Task<IActionResult> GetOneLeaveAsync([FromRoute(Name = "id")] int id)
+        public IActionResult GetOneLeave([FromRoute(Name = "id")] int id)
         {
-            var leave = await _manager.Leave.GetOneLeaveByIDWithRelationsAsync(id, false);
+            var leave = _manager.Leave.GetOneLeaveByIDWithRelations(id, false);
 
             if (leave is null)
                 throw new LeaveRequestNotFoundException(id);
@@ -52,7 +52,7 @@ namespace Presentation.Controller
         [Authorize]
         [HttpPost]
         [Route("CreateOneLeave")]
-        public async Task<IActionResult> CreateOneBookAsync([FromBody] LeaveRequestDtoInsertion leaveRequestDtoInsert)
+        public IActionResult CreateOneBook([FromBody] LeaveRequestDtoInsertion leaveRequestDtoInsert)
         {
             var username = User.FindFirstValue(ClaimTypes.Name);
             if (string.IsNullOrEmpty(username))
@@ -67,7 +67,7 @@ namespace Presentation.Controller
 
             leaveRequestDtoInsert.UserId = user.Id; // Set the Id of the created leave  
 
-            var createdLeave = await _manager.Leave.CreateOneLeaveAsync(leaveRequestDtoInsert);
+            var createdLeave = _manager.Leave.CreateOneLeave(leaveRequestDtoInsert);
 
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState); // 422  
@@ -78,7 +78,7 @@ namespace Presentation.Controller
         [Authorize]
         [HttpPut]
         [Route("UpdateOneLeave/{id:int}")]
-        public async Task<IActionResult> UpdateOneLeaveAsync([FromRoute(Name = "id")] int id,
+        public IActionResult UpdateOneLeave([FromRoute(Name = "id")] int id,
             [FromBody] LeaveRequestDtoForUpdate leaveRequestDto)
         {
             if (leaveRequestDto is null)
@@ -87,17 +87,17 @@ namespace Presentation.Controller
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState); // 422
 
-            await _manager.Leave.UpdateOneLeaveAsync(id, leaveRequestDto, false);
+            _manager.Leave.UpdateOneLeave(id, leaveRequestDto, false);
             return NoContent(); // 204 
         }
 
         [Authorize]
         [HttpDelete]
         [Route("DeleteOneLeave/{id:int}")]
-        public async Task<IActionResult> DeleteOneBookAsync([FromRoute(Name = "id")] int id)
+        public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)
         {
-            await _manager.Leave
-           .DeleteOneLeaveAsync(id, true);
+            _manager.Leave
+           .DeleteOneLeave(id, false);
             return NoContent();
         }
 
@@ -105,7 +105,7 @@ namespace Presentation.Controller
         [Authorize]
         [HttpGet]
         [Route("MyRequests")]
-        public async Task<IActionResult> MyRequestsAsync(bool trackChanges)
+        public IActionResult MyRequests(bool trackChanges)
         {
             var username = User.FindFirstValue(ClaimTypes.Name);
             if (string.IsNullOrEmpty(username))
@@ -113,7 +113,7 @@ namespace Presentation.Controller
             var user = _userManager.FindByNameAsync(username).Result;
             if (user == null)
                 return Unauthorized();
-            var leaves = await _manager.Leave.MyRequestsAsync(user.Id, trackChanges);
+            var leaves = _manager.Leave.MyRequests(user.Id, trackChanges);
             return Ok(leaves);
         }
 
@@ -121,7 +121,7 @@ namespace Presentation.Controller
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("Pending")]
-        public async Task<IActionResult> PendingAsync(bool trackChanges)
+        public IActionResult Pending(bool trackChanges)
         {
             var username = User.FindFirstValue(ClaimTypes.Name);
             if (string.IsNullOrEmpty(username))
@@ -129,16 +129,17 @@ namespace Presentation.Controller
             var user = _userManager.FindByNameAsync(username).Result;
             if (user == null)
                 return Unauthorized();
-            var leaves = await _manager.Leave.PendingAsync(user.Id, trackChanges);
+            var leaves = _manager.Leave.Pending(user.Id, trackChanges);
             return Ok(leaves);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("{id:int}/approve")]
-        public async Task<IActionResult> ApproveAsync([FromRoute(Name = "id")] int id)
+        public IActionResult Approve([FromRoute(Name = "id")] int id)
         {
-            var leave = await _manager.Leave.GetOneLeaveByIDWithRelationsAsync(id, true);
+           
+            var leave = _manager.Leave.GetOneLeaveByIDWithRelations(id, false);
 
             if (leave == null)
                 throw new LeaveNotFoundException(id);
@@ -147,7 +148,8 @@ namespace Presentation.Controller
                 throw new LeaveAlreadyProcessedException(id, leave.Durum);
 
             leave.Durum = "Onaylandı";
-            _manager.Leave.UpdateOneLeaveAsync(id, _mapper.Map<LeaveRequestDtoForUpdate>(leave), true);
+            
+            _manager.Leave.UpdateOneLeave(id, _mapper.Map<LeaveRequestDtoForUpdate>(leave), false);
             return Ok(leave);
         }
 
@@ -155,9 +157,9 @@ namespace Presentation.Controller
         [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("{id:int}/reject")]
-        public async Task<IActionResult> RejectAsync([FromRoute(Name = "id")] int id)
+        public IActionResult Reject([FromRoute(Name = "id")] int id)
         {
-            var leave = await _manager.Leave.GetOneLeaveByIDWithRelationsAsync(id, true);
+            var leave = _manager.Leave.GetOneLeaveByIDWithRelations(id, false);
 
             if (leave == null)
                 throw new LeaveNotFoundException(id);
@@ -167,7 +169,7 @@ namespace Presentation.Controller
                 throw new LeaveAlreadyProcessedException(id, leave.Durum);
 
             leave.Durum = "Reddedildi";
-            _manager.Leave.UpdateOneLeaveAsync(id, _mapper.Map<LeaveRequestDtoForUpdate>(leave), true);
+            _manager.Leave.UpdateOneLeave(id, _mapper.Map<LeaveRequestDtoForUpdate>(leave), false);
             return Ok(leave);
         }
 

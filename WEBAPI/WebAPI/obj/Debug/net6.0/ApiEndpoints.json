@@ -97,8 +97,28 @@
   },
   {
     "ContainingType": "Presentation.Controller.EquipmentController",
+    "Method": "GetAllApprovedEquipments",
+    "RelativePath": "api/Equipment/GetAllApprovedEquipments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controller.EquipmentController",
     "Method": "GetAllEquipments",
     "RelativePath": "api/Equipment/GetAllEquipments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controller.EquipmentController",
+    "Method": "GetAllStocks",
+    "RelativePath": "api/Equipment/GetAllStocks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -164,7 +184,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "ApproveAsync",
+    "Method": "Approve",
     "RelativePath": "api/Leaves/{id}/approve",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -180,7 +200,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "RejectAsync",
+    "Method": "Reject",
     "RelativePath": "api/Leaves/{id}/reject",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -196,7 +216,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "CreateOneBookAsync",
+    "Method": "CreateOneBook",
     "RelativePath": "api/Leaves/CreateOneLeave",
     "HttpMethod": "POST",
     "IsController": true,
@@ -212,7 +232,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "DeleteOneBookAsync",
+    "Method": "DeleteOneBook",
     "RelativePath": "api/Leaves/DeleteOneLeave/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -228,7 +248,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "GetAllLeavesAsync",
+    "Method": "GetAllLeaves",
     "RelativePath": "api/Leaves/GetAllLeaves",
     "HttpMethod": "GET",
     "IsController": true,
@@ -238,7 +258,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "GetOneLeaveAsync",
+    "Method": "GetOneLeave",
     "RelativePath": "api/Leaves/GetOneLeave/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -254,7 +274,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "MyRequestsAsync",
+    "Method": "MyRequests",
     "RelativePath": "api/Leaves/MyRequests",
     "HttpMethod": "GET",
     "IsController": true,
@@ -270,7 +290,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "PendingAsync",
+    "Method": "Pending",
     "RelativePath": "api/Leaves/Pending",
     "HttpMethod": "GET",
     "IsController": true,
@@ -286,7 +306,7 @@
   },
   {
     "ContainingType": "Presentation.Controller.LeavesController",
-    "Method": "UpdateOneLeaveAsync",
+    "Method": "UpdateOneLeave",
     "RelativePath": "api/Leaves/UpdateOneLeave/{id}",
     "HttpMethod": "PUT",
     "IsController": true,

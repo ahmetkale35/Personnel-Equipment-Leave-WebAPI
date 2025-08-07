@@ -31,8 +31,25 @@ namespace Presentation.Controller
         [Route("GetAllEquipments")]
         public IActionResult GetAllEquipments()
         {
-            var equipments = _manager.Equipment.GetAllEquipmentsWithRelations(false);
+            var equipments = _manager.Equipment.GetAllEquipments(false);
             return Ok(equipments);
+        }
+
+        [HttpGet]
+        [Route("GetAllApprovedEquipments")]
+        public IActionResult GetAllApprovedEquipments()
+        {
+            var equipments = _manager.Equipment.GetAllApprovedEquipments(false);
+            return Ok(equipments);
+        }
+
+        [HttpGet]
+        [Route("GetAllStocks")]
+
+        public IActionResult GetAllStocks()
+        {
+            var stocks = _manager.Equipment.GetAllStocks(false);
+            return Ok(stocks);
         }
 
         [Authorize]
@@ -52,6 +69,15 @@ namespace Presentation.Controller
         [Route("CreateOneEquipment")]
         public IActionResult CreateOneEquipment([FromBody] EquipmentDtoInsertion equipmentDtoInsertion)
         {
+
+            if (!_manager.Equipment.IsEquipmentExists(equipmentDtoInsertion.EquipmentItemId, false))
+                throw new EquipmentOutOfStockException(equipmentDtoInsertion.EquipmentItemId, _manager.Equipment.StockCount(equipmentDtoInsertion.EquipmentItemId,false));
+
+            int stockCount = _manager.Equipment.StockCount(equipmentDtoInsertion.EquipmentItemId, false);
+
+            if (stockCount < equipmentDtoInsertion.Adet)
+            throw new InsufficientEquipmentStockException(equipmentDtoInsertion.EquipmentItemId);
+
             var username = User.FindFirstValue(ClaimTypes.Name);
             if (string.IsNullOrEmpty(username))
                 return Unauthorized();
@@ -93,7 +119,7 @@ namespace Presentation.Controller
         [Route("DeleteOneEquipment/{id:int}")]
         public IActionResult DeleteOneEquipment([FromRoute(Name = "id")] int id)
         {
-            _manager.Equipment.DeleteOneEquipment(id, true);
+            _manager.Equipment.DeleteOneEquipment(id, false);
             return NoContent(); // 204
 
         }
@@ -127,6 +153,7 @@ namespace Presentation.Controller
             if (user == null)
                 return Unauthorized();
             var pendingEquipments = _manager.Equipment.Pending(user.Id, false);
+            
             if (!pendingEquipments.Any())
                 throw new UserHasNoEquipmentRequestsException(user.Id);
             return Ok(pendingEquipments);
@@ -144,18 +171,30 @@ namespace Presentation.Controller
             if (user == null)
                 return Unauthorized();
 
-            var equipment = _manager.Equipment.GetOneEquipmentByIDWithRelations(id, true);
-
-            if (equipment == null)
+            var equipmentRequest = _manager.Equipment.GetOneEquipmentByIDWithRelations(id, false);
+            if (equipmentRequest == null)
                 throw new EquipmentNotFoundException(id);
 
-            if (equipment.Durum != "Bekliyor")
-                throw new EquipmentAlreadyProcessedException(id, equipment.Durum);
+            if (equipmentRequest.Durum != "Bekliyor")
+                throw new EquipmentAlreadyProcessedException(id, equipmentRequest.Durum);
 
-            equipment.Durum = "Onaylandı";
-            equipment.OnaylayanId = user.Id;
-            _manager.Equipment.UpdateOneEquipment(id, _mapper.Map<EquipmentDtoForUpdate>(equipment), true);
-            return Ok(equipment);
+            var equipmentId = equipmentRequest.EquipmentItemId;
+            var stockCount = _manager.Equipment.StockCount(equipmentId, false);
+
+            
+            if (!_manager.Equipment.IsEquipmentExists(equipmentId, false))
+                throw new EquipmentOutOfStockException(equipmentId, stockCount);
+
+            _manager.Equipment.CheckEquipmentStock(equipmentRequest.Id, false);
+
+            equipmentRequest = _manager.Equipment.DecreaseCount(equipmentRequest.Id, false); // Stoktan düş
+            equipmentRequest.Durum = "Onaylandı";
+
+            equipmentRequest.OnaylayanId = user.Id;
+            var equipmentDtoforUpdate = _mapper.Map<EquipmentDtoForUpdate>(equipmentRequest);
+            _manager.Equipment.UpdateOneEquipment(id, equipmentDtoforUpdate, false);
+            return Ok(equipmentRequest);
+            
         }
 
         [Authorize(Roles = "Admin,It")]
@@ -169,7 +208,7 @@ namespace Presentation.Controller
             if (user == null)
                 return Unauthorized();
 
-            var equipment = _manager.Equipment.GetOneEquipmentByIDWithRelations(id, true);
+            var equipment = _manager.Equipment.GetOneEquipmentByIDWithRelations(id, false);
 
             if (equipment == null)
                 throw new EquipmentNotFoundException(id);
@@ -180,7 +219,8 @@ namespace Presentation.Controller
 
             equipment.Durum = "Reddedildi";
             equipment.OnaylayanId = user.Id;
-            _manager.Equipment.UpdateOneEquipment(id, _mapper.Map<EquipmentDtoForUpdate>(equipment), true);
+            _manager.Equipment.UpdateOneEquipment(id, _mapper.Map<EquipmentDtoForUpdate>(equipment), false);
+
             return Ok(equipment);
         }
 

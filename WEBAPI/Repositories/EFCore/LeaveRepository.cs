@@ -17,37 +17,34 @@ namespace Repositories.EFCore
         public void DeleteOneLeave(LeaveRequest leave) => Delete(leave);
         public IQueryable<LeaveRequest> GetAllLeaves(bool trackChanges) => 
             FindAll(trackChanges);
-        public async Task<IEnumerable<LeaveRequest>> GetAllLeavesWithRelationsAsync(bool trackChanges)
+        public IEnumerable<LeaveRequest> GetAllLeavesWithRelations(bool trackChanges)
         {
             return trackChanges
-                ? await _context.LeaveRequests
+                ? _context.LeaveRequests
                     .Include(l => l.User)
                     .Include(l => l.LeaveType)
-                    .ToListAsync()
-                : await _context.LeaveRequests
+                    .ToList()
+                : _context.LeaveRequests
                     .AsNoTracking()
                     .Include(l => l.User)
                     .Include(l => l.LeaveType)
-                    .ToListAsync();
+                    .ToList();
         }
-
-        public async Task<LeaveRequest> GetOneLeaveByIdAsync(int id, bool trackChanges) => 
-            await FindByCondition(x => x.id.Equals(id), trackChanges).SingleOrDefaultAsync();
-
-        public async Task<LeaveRequest> GetOneLeaveByIDWithRelationsAsync(int id, bool trackChanges)
+        public IQueryable<LeaveRequest> GetOneLeaveById(int id, bool trackChanges) => 
+            FindByCondition(x => x.id.Equals(id), trackChanges);
+        public LeaveRequest GetOneLeaveByIDWithRelations(int id, bool trackChanges)
         {
             return trackChanges
-        ? await _context.LeaveRequests
+        ? _context.LeaveRequests
             .Include(lr => lr.User)
             .Include(lr => lr.LeaveType)
-            .FirstOrDefaultAsync(lr => lr.id == id)
-        : await _context.LeaveRequests
+            .FirstOrDefault(lr => lr.id == id)
+        : _context.LeaveRequests
             .AsNoTracking()
             .Include(lr => lr.User)
             .Include(lr => lr.LeaveType)
-            .FirstOrDefaultAsync(lr => lr.id == id);
+            .FirstOrDefault(lr => lr.id == id);
         }
-
         public void UpdateOneLeave(LeaveRequest leave) => Update(leave);
 
     }

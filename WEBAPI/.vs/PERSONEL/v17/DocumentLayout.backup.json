@@ -1,10 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54E68324-E5FC-49DC-BAD4-056590687C8B}|WebAPI\\WebAPI.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54E68324-E5FC-49DC-BAD4-056590687C8B}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5D05CAED-8C72-45C0-A7DF-B9EE103AE797}|Sevices\\Services.csproj|c:\\users\\ahmet\\source\\repos\\webapi\\sevices\\equipmentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D05CAED-8C72-45C0-A7DF-B9EE103AE797}|Sevices\\Services.csproj|solutionrelative:sevices\\equipmentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{077BB231-2E98-453B-B7ED-0B78003354F4}|Repositories\\Repositories.csproj|c:\\users\\ahmet\\source\\repos\\webapi\\repositories\\efcore\\equipmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{077BB231-2E98-453B-B7ED-0B78003354F4}|Repositories\\Repositories.csproj|solutionrelative:repositories\\efcore\\equipmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 175,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 23,
           "Children": [
             {
               "$type": "Bookmark",
@@ -99,25 +103,39 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 175,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1751766422:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:599967464:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Program.cs",
-              "RelativeToolTip": "WebAPI\\Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADAAAAADAAAAAAAAAA==",
+              "Title": "EquipmentManager.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\EquipmentManager.cs",
+              "RelativeDocumentMoniker": "Sevices\\EquipmentManager.cs",
+              "ToolTip": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\EquipmentManager.cs",
+              "RelativeToolTip": "Sevices\\EquipmentManager.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAswFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T14:20:23.75Z",
+              "WhenOpened": "2025-08-06T14:16:04.48Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EquipmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\EFCore\\EquipmentRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\EFCore\\EquipmentRepository.cs",
+              "ToolTip": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\EFCore\\EquipmentRepository.cs",
+              "RelativeToolTip": "Repositories\\EFCore\\EquipmentRepository.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwEYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T14:12:26.035Z"
             }
           ]
         },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -94,6 +94,14 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1751766422:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:599967464:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
             }
           ]
         },

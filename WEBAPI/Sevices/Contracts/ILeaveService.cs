@@ -5,22 +5,22 @@ namespace Services.Contracts
 {
     public interface ILeaveService
     {
-        Task<IEnumerable<LeaveRequestDto>> GetAllLeavesAsync(bool trackChanges);
+        IEnumerable<LeaveRequestDto> GetAllLeaves(bool trackChanges);
 
-        Task<LeaveRequestDto> GetOneLeaveByIDAsync(int id, bool trackChanges);
+        LeaveRequestDto GetOneLeaveByID(int id, bool trackChanges);
 
-        Task<LeaveRequestDto> CreateOneLeaveAsync(LeaveRequestDtoInsertion leaveRequest);
+        LeaveRequestDto CreateOneLeave(LeaveRequestDtoInsertion leaveRequest);
 
-        Task UpdateOneLeaveAsync(int id,LeaveRequestDtoForUpdate leaveRequestDto,bool trackChanges);
+        void UpdateOneLeave(int id,LeaveRequestDtoForUpdate leaveRequestDto,bool trackChanges);
 
-        Task DeleteOneLeaveAsync(int id,bool trackChanges);
-        Task<IEnumerable<LeaveRequestDto>> GetAllLeavesWithRelationsAsync(bool trackChanges);
+        void DeleteOneLeave(int id,bool trackChanges);
+        IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(bool trackChanges);
 
-        Task<LeaveRequestDto> GetOneLeaveByIDWithRelationsAsync(int id, bool trackChanges);
+        LeaveRequestDto GetOneLeaveByIDWithRelations(int id, bool trackChanges);
 
-        Task<IEnumerable<LeaveRequestDto>> MyRequestsAsync(string id, bool trackChanges);
+        IEnumerable<LeaveRequestDto> MyRequests(string id, bool trackChanges);
 
-        Task<IEnumerable<LeaveRequestDto>> PendingAsync(string id, bool trackChanges);
+        IEnumerable<LeaveRequestDto> Pending(string id, bool trackChanges);
 
 
 

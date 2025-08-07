@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Presentation.csproj": {}
+    "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Presentation\\Presentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj": {
+    "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -75,14 +75,14 @@
         }
       }
     },
-    "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Presentation.csproj": {
+    "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Presentation\\Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Presentation.csproj",
+        "projectUniqueName": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Presentation\\Presentation.csproj",
         "projectName": "Presentation",
-        "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Presentation.csproj",
+        "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Presentation\\Presentation.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\obj\\",
+        "outputPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Presentation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -103,8 +103,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj": {
-                "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj"
+              "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj": {
+                "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj"
               }
             }
           }
@@ -154,14 +154,14 @@
         }
       }
     },
-    "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\Repositories.csproj": {
+    "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\Repositories.csproj",
+        "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\Repositories.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\obj\\",
+        "outputPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -182,8 +182,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj"
               }
             }
           }
@@ -229,14 +229,14 @@
         }
       }
     },
-    "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj": {
+    "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\Services.csproj",
+        "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\Services.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Sevices\\obj\\",
+        "outputPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Sevices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -257,11 +257,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\Repositories.csproj": {
-                "projectPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\Repositories.csproj"
+              "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\Repositories.csproj": {
+                "projectPath": "C:\\Users\\ahmet\\source\\repos\\WEBAPI\\Repositories\\Repositories.csproj"
               }
             }
           }
