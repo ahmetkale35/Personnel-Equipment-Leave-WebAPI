@@ -19,6 +19,7 @@ namespace Entities.DataTransferObject
         [DataType(DataType.Date, ErrorMessage = "Geçerli bir tarih giriniz.")]
         public DateTime BitisTarihi { get; init; }
 
+        [Required(ErrorMessage = "Açıklama zorunludur.")]
         [StringLength(500, ErrorMessage = "Açıklama en fazla 500 karakter olabilir.")]
         public string? Aciklama { get; init; }
 

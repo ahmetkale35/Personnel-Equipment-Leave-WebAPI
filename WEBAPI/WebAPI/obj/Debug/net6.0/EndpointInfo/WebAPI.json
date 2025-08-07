@@ -664,6 +664,7 @@
       },
       "LeaveRequestDtoForUpdate": {
         "required": [
+          "aciklama",
           "baslangicTarihi",
           "bitisTarihi",
           "durum",
@@ -690,8 +691,7 @@
           "aciklama": {
             "maxLength": 500,
             "minLength": 0,
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "durum": {
             "maxLength": 50,
@@ -703,6 +703,7 @@
       },
       "LeaveRequestDtoInsertion": {
         "required": [
+          "aciklama",
           "baslangicTarihi",
           "bitisTarihi",
           "durum",
@@ -729,8 +730,7 @@
           "aciklama": {
             "maxLength": 500,
             "minLength": 0,
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "durum": {
             "maxLength": 50,

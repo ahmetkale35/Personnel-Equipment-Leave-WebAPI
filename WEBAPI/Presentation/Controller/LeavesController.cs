@@ -5,6 +5,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Services.Contracts;
 using System.Security.Claims;
 
@@ -49,6 +50,7 @@ namespace Presentation.Controller
             return Ok(leave);
         }
 
+        [ServiceFilter(typeof(ValidationActionAttribute))]
         [Authorize]
         [HttpPost]
         [Route("CreateOneLeave")]
@@ -62,30 +64,31 @@ namespace Presentation.Controller
             if (user == null)
                 return Unauthorized();
 
-            if (leaveRequestDtoInsert is null)
-                return BadRequest(); // 400  
+            //if (leaveRequestDtoInsert is null)
+            //    return BadRequest(); // 400  
 
             leaveRequestDtoInsert.UserId = user.Id; // Set the Id of the created leave  
 
             var createdLeave = _manager.Leave.CreateOneLeave(leaveRequestDtoInsert);
 
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState); // 422  
+            //if (!ModelState.IsValid)
+            //    return UnprocessableEntity(ModelState); // 422  
 
             return StatusCode(201, createdLeave); // CreatedAtRoute()  
         }
 
+        [ServiceFilter(typeof(ValidationActionAttribute))]
         [Authorize]
         [HttpPut]
         [Route("UpdateOneLeave/{id:int}")]
         public IActionResult UpdateOneLeave([FromRoute(Name = "id")] int id,
             [FromBody] LeaveRequestDtoForUpdate leaveRequestDto)
         {
-            if (leaveRequestDto is null)
-                return BadRequest(); // 400
+            //if (leaveRequestDto is null)
+            //    return BadRequest(); // 400
 
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState); // 422
+            //if (!ModelState.IsValid)
+            //    return UnprocessableEntity(ModelState); // 422
 
             _manager.Leave.UpdateOneLeave(id, leaveRequestDto, false);
             return NoContent(); // 204 

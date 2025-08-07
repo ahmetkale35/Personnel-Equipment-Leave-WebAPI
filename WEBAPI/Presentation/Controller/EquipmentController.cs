@@ -1,13 +1,15 @@
-﻿using Entities.Models;
+﻿using AutoMapper;
+using Entities.DataTransferObject.EquipmentDTO;
+using Entities.Exceptions.EquipmentExceptions;
+using Entities.Exceptions.UserExceptions;
+using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Services.Contracts;
-using Microsoft.AspNetCore.Authorization;
-using Entities.DataTransferObject.EquipmentDTO;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using AutoMapper;
-using Entities.Exceptions.UserExceptions;
-using Entities.Exceptions.EquipmentExceptions;
 
 namespace Presentation.Controller
 {
@@ -64,6 +66,7 @@ namespace Presentation.Controller
             return Ok(equipment);
         }
 
+        [ServiceFilter(typeof(ValidationActionAttribute))]
         [Authorize]
         [HttpPost]
         [Route("CreateOneEquipment")]
@@ -85,31 +88,18 @@ namespace Presentation.Controller
             if (user == null)
                 return Unauthorized();
 
-            if (equipmentDtoInsertion == null)
-                return BadRequest("Equipment data is null");
-
             equipmentDtoInsertion.UserId = user.Id;
-
             var createdEquipment = _manager.Equipment.CreateOneEquipment(equipmentDtoInsertion);
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState); // 422
-
             return StatusCode(201, createdEquipment); // CreatedAtRoute()
         }
 
+        [ServiceFilter(typeof(ValidationActionAttribute))]
         [Authorize]
         [HttpPut]
         [Route("UpdateOneEquipment/{id:int}")]
         public IActionResult UpdateOneEquipment([FromRoute(Name = "id")] int id,
             [FromBody] EquipmentDtoForUpdate equipmentDtoForUpdate)
         {
-            if (equipmentDtoForUpdate == null)
-                return BadRequest();
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState); // 422
-
             _manager.Equipment.UpdateOneEquipment(id, equipmentDtoForUpdate, false);
             return NoContent(); // 204
         }

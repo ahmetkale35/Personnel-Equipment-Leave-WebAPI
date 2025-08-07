@@ -1,9 +1,10 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
+using Presentation.ActionFilters;
 using Services.Contracts;
 using WebAPI.Extensions;
-using WebAPI.Utilities.AutoMapper;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ builder.Services.AddControllers(config =>
    // .AddXmlDataContractSerializerFormatters()
     .AddApplicationPart(typeof(Presentation.AssemblyRefence).Assembly)
     .AddNewtonsoftJson();
-
+builder.Services.AddScoped<ValidationActionAttribute>();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -30,7 +31,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 });
 
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
