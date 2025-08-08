@@ -14,19 +14,19 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
-        
 
-        public LeaveManager(IRepositoryManager manager,ILoggerService logger, IMapper mapper)
+
+        public LeaveManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
         }
-        
+
         public LeaveRequestDto CreateOneLeave(LeaveRequestDtoInsertion leaveRequestDtoIns)
         {
-           var entity = _mapper.Map<LeaveRequest>(leaveRequestDtoIns);
-            _manager.Leave.CreateOneLeave(entity);   
+            var entity = _mapper.Map<LeaveRequest>(leaveRequestDtoIns);
+            _manager.Leave.CreateOneLeave(entity);
             _manager.Save();
             return _mapper.Map<LeaveRequestDto>(entity);
         }
@@ -36,7 +36,7 @@ namespace Services
             var entity = _manager.Leave.GetOneLeaveByIDWithRelations(id, trackChanges);
             if (entity == null)
                 throw new LeaveRequestNotFoundException(id);
-            
+
             _manager.Leave.DeleteOneLeave(entity);
             _manager.Save();
 
@@ -46,7 +46,7 @@ namespace Services
         {
             return _mapper.Map<IEnumerable<LeaveRequestDto>>(
                 trackChanges ? _manager.Leave.GetAllLeaves(trackChanges) : _manager.Leave.GetAllLeaves(false));
-            
+
         }
 
         public IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(bool trackChanges)
@@ -66,7 +66,7 @@ namespace Services
 
         public LeaveRequestDto GetOneLeaveByIDWithRelations(int id, bool trackChanges)
         {
-            var leave =  _manager.Leave.GetOneLeaveByIDWithRelations(id, trackChanges);
+            var leave = _manager.Leave.GetOneLeaveByIDWithRelations(id, trackChanges);
             if (leave is null)
                 throw new LeaveRequestNotFoundException(id);
 
@@ -75,10 +75,10 @@ namespace Services
 
         public IEnumerable<LeaveRequestDto> MyRequests(string id, bool trackChanges)
         {
-           List<LeaveRequestDto> myRequests = _manager.Leave.GetAllLeavesWithRelations(trackChanges)
-                .Where(l => l.UserId == id)
-                .Select(l => _mapper.Map<LeaveRequestDto>(l))
-                .ToList();
+            List<LeaveRequestDto> myRequests = _manager.Leave.GetAllLeavesWithRelations(trackChanges)
+                 .Where(l => l.UserId == id)
+                 .Select(l => _mapper.Map<LeaveRequestDto>(l))
+                 .ToList();
             if (myRequests.Count == 0)
                 throw new UserHasNoLeaveRequestsException(id);
             return myRequests;
@@ -117,13 +117,12 @@ namespace Services
             //entity.LeaveTypeId = leaveRequest.LeaveTypeId;
             //entity.UserId = leaveRequest.UserId;
 
-
-
             // AutoMapper ile güncelleme
             _mapper.Map(leaveRequestDto, entity);
             _manager.Leave.UpdateOneLeave(entity);
             _manager.Save();
         }
+
 
     }
 }

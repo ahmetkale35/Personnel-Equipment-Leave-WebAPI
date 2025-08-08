@@ -8,11 +8,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
 using Services.Contracts;
-using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
 namespace Presentation.Controller
 {
+    
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/[controller]")]
 

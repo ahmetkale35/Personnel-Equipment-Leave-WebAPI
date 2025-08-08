@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\presentation\\controller\\leavescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controller\\leavescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB155DFE-C3E7-4DFA-A9E8-C4519FE6E8DD}|Entities\\Entities.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\entities\\datatransferobject\\leavedto\\leaverequestdtomanipulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB155DFE-C3E7-4DFA-A9E8-C4519FE6E8DD}|Entities\\Entities.csproj|solutionrelative:entities\\datatransferobject\\leavedto\\leaverequestdtomanipulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\presentation\\controller\\equipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controller\\equipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{077BB231-2E98-453B-B7ED-0B78003354F4}|Repositories\\Repositories.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\repositories\\efcore\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{077BB231-2E98-453B-B7ED-0B78003354F4}|Repositories\\Repositories.csproj|solutionrelative:repositories\\efcore\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\presentation\\controller\\leavescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controller\\leavescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{077BB231-2E98-453B-B7ED-0B78003354F4}|Repositories\\Repositories.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\repositories\\efcore\\equipmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{077BB231-2E98-453B-B7ED-0B78003354F4}|Repositories\\Repositories.csproj|solutionrelative:repositories\\efcore\\equipmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\presentation\\actionfilters\\logfilterattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|solutionrelative:presentation\\actionfilters\\logfilterattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\presentation\\actionfilters\\validationactionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DB1EBA3-AC23-47F5-82EB-3CB28C12C164}|Presentation\\Presentation.csproj|solutionrelative:presentation\\actionfilters\\validationactionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB155DFE-C3E7-4DFA-A9E8-C4519FE6E8DD}|Entities\\Entities.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\entities\\logmodel\\logdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB155DFE-C3E7-4DFA-A9E8-C4519FE6E8DD}|Entities\\Entities.csproj|solutionrelative:entities\\logmodel\\logdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54E68324-E5FC-49DC-BAD4-056590687C8B}|WebAPI\\WebAPI.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\webapi\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54E68324-E5FC-49DC-BAD4-056590687C8B}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54E68324-E5FC-49DC-BAD4-056590687C8B}|WebAPI\\WebAPI.csproj|c:\\users\\ahmet\\documents\\github\\personnel-equipment-leave-webapi\\webapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,8 +34,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 175,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeavesController.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\LeavesController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controller\\LeavesController.cs",
+              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\LeavesController.cs",
+              "RelativeToolTip": "Presentation\\Controller\\LeavesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T06:41:30.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EquipmentController.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\EquipmentController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controller\\EquipmentController.cs",
+              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\EquipmentController.cs*",
+              "RelativeToolTip": "Presentation\\Controller\\EquipmentController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T06:41:01.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T06:39:06.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Extensions\\ServiceExtensions.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Extensions\\ServiceExtensions.cs",
+              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Extensions\\ServiceExtensions.cs",
+              "RelativeToolTip": "WebAPI\\Extensions\\ServiceExtensions.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAQwFcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T06:36:51.296Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:46:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
@@ -126,93 +174,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LeaveRequestDtoManipulation.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\DataTransferObject\\LeaveDTO\\LeaveRequestDtoManipulation.cs",
-              "RelativeDocumentMoniker": "Entities\\DataTransferObject\\LeaveDTO\\LeaveRequestDtoManipulation.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\DataTransferObject\\LeaveDTO\\LeaveRequestDtoManipulation.cs",
-              "RelativeToolTip": "Entities\\DataTransferObject\\LeaveDTO\\LeaveRequestDtoManipulation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T13:47:51.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LeavesController.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\LeavesController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controller\\LeavesController.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\LeavesController.cs",
-              "RelativeToolTip": "Presentation\\Controller\\LeavesController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAYwDQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T13:44:12.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EquipmentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\EFCore\\EquipmentRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\EFCore\\EquipmentRepository.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\EFCore\\EquipmentRepository.cs",
-              "RelativeToolTip": "Repositories\\EFCore\\EquipmentRepository.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAhwEMAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T13:36:52.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "RepositoryBase.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\EFCore\\RepositoryBase.cs",
-              "RelativeDocumentMoniker": "Repositories\\EFCore\\RepositoryBase.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Repositories\\EFCore\\RepositoryBase.cs",
-              "RelativeToolTip": "Repositories\\EFCore\\RepositoryBase.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAIA3wC0AAAAoAAAAAAAAAA==",
+              "Title": "LogDetails.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\LogModel\\LogDetails.cs",
+              "RelativeDocumentMoniker": "Entities\\LogModel\\LogDetails.cs",
+              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Entities\\LogModel\\LogDetails.cs",
+              "RelativeToolTip": "Entities\\LogModel\\LogDetails.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAUwBoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T13:36:52.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ValidationActionAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\ActionFilters\\ValidationActionAttribute.cs",
-              "RelativeDocumentMoniker": "Presentation\\ActionFilters\\ValidationActionAttribute.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\ActionFilters\\ValidationActionAttribute.cs",
-              "RelativeToolTip": "Presentation\\ActionFilters\\ValidationActionAttribute.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAqwCEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:35:12.958Z",
+              "WhenOpened": "2025-08-08T06:31:35.857Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EquipmentController.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\EquipmentController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controller\\EquipmentController.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\Controller\\EquipmentController.cs",
-              "RelativeToolTip": "Presentation\\Controller\\EquipmentController.cs",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAYwGYAAAAMAAAAAAAAAA==",
+              "Title": "LogFilterAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\ActionFilters\\LogFilterAttribute.cs",
+              "RelativeDocumentMoniker": "Presentation\\ActionFilters\\LogFilterAttribute.cs",
+              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\Presentation\\ActionFilters\\LogFilterAttribute.cs",
+              "RelativeToolTip": "Presentation\\ActionFilters\\LogFilterAttribute.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA8wCoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:44:38.287Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\ahmet\\Documents\\GitHub\\Personnel-Equipment-Leave-WebAPI\\WEBAPI\\WebAPI\\Program.cs",
-              "RelativeToolTip": "WebAPI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:43:30.302Z",
+              "WhenOpened": "2025-08-08T06:16:57.133Z",
               "EditorCaption": ""
             }
           ]

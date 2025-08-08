@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace Presentation.Controller
 {
-
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/[controller]")]
     public class LeavesController : ControllerBase
