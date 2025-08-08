@@ -491,3 +491,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/WEBAPI/.vs/PERSONEL/CopilotIndices/17.14.827.52834
+/WEBAPI/.vs/PERSONEL/CopilotIndices/17.14.827.52834
+/WEBAPI/Entities/obj/Debug/net6.0
+/WEBAPI/Entities/obj/Debug/net6.0
