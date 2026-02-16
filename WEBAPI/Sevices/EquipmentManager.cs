@@ -4,6 +4,7 @@ using Entities.DataTransferObject.EquipmentDTO;
 using Entities.Exceptions.EquipmentExceptions;
 using Entities.Exceptions.UserExceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
 using SQLitePCL;
@@ -168,10 +169,11 @@ namespace Services
 
         }
 
-        public IEnumerable<EquipmentDto> GetAllEquipments(bool trackChanges)
+        // Fixed: accept an EquipmentParameters instance instead of attempting to use the type name in a call
+        public IEnumerable<EquipmentDto> GetAllEquipments(EquipmentParameters equipmentParameters, bool trackChanges)
         {
-            return _mapper.Map<IEnumerable<EquipmentDto>>(
-                 trackChanges ? _manager.Equipment.GetAllEquipments(trackChanges) : _manager.Equipment.GetAllEquipments(false));
+            var equipments = _manager.Equipment.GetAllEquipments(equipmentParameters, trackChanges);
+            return _mapper.Map<IEnumerable<EquipmentDto>>(equipments);
         }
 
         public List<EquipmentItem> GetAllStocks(bool trackChanges)

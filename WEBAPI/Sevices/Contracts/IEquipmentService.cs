@@ -2,13 +2,14 @@
 using System.Threading.Tasks;
 using Entities.DataTransferObject.EquipmentDTO;
 using Entities.Models;
+using Entities.RequestFeatures;
 
 
 namespace Services.Contracts
 {
     public interface IEquipmentService
     {
-        IEnumerable<EquipmentDto> GetAllEquipments(bool trackChanges);
+        IEnumerable<EquipmentDto> GetAllEquipments(EquipmentParameters equipmentparameter, bool trackChanges);
 
         IEnumerable<EquipmentDto> GetAllApprovedEquipments(bool trackChanges);
 

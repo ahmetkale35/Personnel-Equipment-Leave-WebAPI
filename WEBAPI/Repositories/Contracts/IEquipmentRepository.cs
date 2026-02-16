@@ -1,5 +1,6 @@
 ﻿using Entities.DataTransferObject.EquipmentDTO;
 using Entities.Models;
+using Entities.RequestFeatures;
 
 
 namespace Repositories.Contracts
@@ -7,7 +8,7 @@ namespace Repositories.Contracts
     public interface IEquipmentRepository
     {
 
-        IQueryable<EquipmentRequests> GetAllEquipments(bool trackChanges);
+        IQueryable<EquipmentRequests> GetAllEquipments(EquipmentParameters equipmentParameter, bool trackChanges);
        // IQueryable<EquipmentRequests> GetAllApprovedEquipments(bool trackChanges);
         IQueryable<EquipmentRequests> GetOneEquipmentById(int id, bool trackChanges);
 

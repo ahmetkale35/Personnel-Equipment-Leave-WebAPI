@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 
@@ -76,8 +77,12 @@ namespace Repositories.EFCore
             return equipment?.Adet ?? 0;
         }
 
-        public IQueryable<EquipmentRequests> GetAllEquipments(bool trackChanges) =>
-           FindAll(trackChanges);
+        public IQueryable<EquipmentRequests> GetAllEquipments(EquipmentParameters equipmentParameter,
+            bool trackChanges) =>
+           FindAll(trackChanges)
+            .Skip((equipmentParameter.PageNumber - 1) * equipmentParameter.PageSize)
+            .Take(equipmentParameter.PageSize)
+            ;
 
         public IQueryable<EquipmentItem> GetAllStocks(bool trackChanges)
         {

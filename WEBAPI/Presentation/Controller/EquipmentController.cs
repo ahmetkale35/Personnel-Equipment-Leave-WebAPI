@@ -3,6 +3,7 @@ using Entities.DataTransferObject.EquipmentDTO;
 using Entities.Exceptions.EquipmentExceptions;
 using Entities.Exceptions.UserExceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,9 @@ namespace Presentation.Controller
 
         [HttpGet]
         [Route("GetAllEquipments")]
-        public IActionResult GetAllEquipments()
+        public IActionResult GetAllEquipments([FromQuery]EquipmentParameters equipmentParameters)
         {
-            var equipments = _manager.Equipment.GetAllEquipments(false);
+            var equipments = _manager.Equipment.GetAllEquipments(equipmentParameters ,false);
             return Ok(equipments);
         }
 
