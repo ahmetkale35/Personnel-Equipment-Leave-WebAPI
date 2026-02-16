@@ -19,7 +19,7 @@ namespace Repositories.Contracts
 
         int stockCount(int id, bool trackChanges);
         // Gets all leaves with their relations (e.g., User and LeaveType)
-        IEnumerable<EquipmentRequests> GetAllEquipmentsWithRelations(bool trackChanges);
+        IEnumerable<EquipmentRequests> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges);
 
 
         // Gets a single leave by ID with its relations

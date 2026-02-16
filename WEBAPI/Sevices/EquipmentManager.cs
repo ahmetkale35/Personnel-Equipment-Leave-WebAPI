@@ -17,6 +17,8 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
+        private EquipmentParameters equipmentParameter;
+
         public EquipmentManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
         {
             _manager = manager;
@@ -71,10 +73,10 @@ namespace Services
             _manager.Save();
         }
 
-        public IEnumerable<EquipmentDto> GetAllApprovedEquipments(bool trackChanges)
+        public IEnumerable<EquipmentDto> GetAllApprovedEquipments(EquipmentParameters equipmentParameter,bool trackChanges)
         {
             List<EquipmentRequests> approvedEquipments = _manager.Equipment
-                .GetAllEquipmentsWithRelations(trackChanges)
+                .GetAllEquipmentsWithRelations(equipmentParameter, trackChanges)
                 .Where(e => e.Durum.Equals("Onaylandı", StringComparison.OrdinalIgnoreCase))
                 .ToList();
             if (approvedEquipments.Count == 0)
@@ -82,11 +84,11 @@ namespace Services
             return _mapper.Map<IEnumerable<EquipmentDto>>(approvedEquipments);
         }
 
-        public IEnumerable<EquipmentDto> GetAllEquipmentsWithRelations(bool trackChanges)
+        public IEnumerable<EquipmentDto> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges)
         {
             return _mapper.Map<IEnumerable<EquipmentDto>>(trackChanges
-                ? _manager.Equipment.GetAllEquipmentsWithRelations(trackChanges)
-                : _manager.Equipment.GetAllEquipmentsWithRelations(false));
+                ? _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,trackChanges)
+                : _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,false));
         }
 
         public EquipmentDto GetOneEquipmentByID(int id, bool trackChanges)
@@ -108,7 +110,7 @@ namespace Services
 
         public IEnumerable<EquipmentDto> MyEquipments(string id, bool trackChanges)
         {
-            List<EquipmentRequests> myRequests = _manager.Equipment.GetAllEquipmentsWithRelations(trackChanges)
+            List<EquipmentRequests> myRequests = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,trackChanges)
                  .Where(e => e.UserId == id).ToList();
             if (myRequests.Count == 0)
                 throw new UserHasNoEquipmentRequestsException($"No equipment requests found for UserId: {id}");
@@ -118,7 +120,7 @@ namespace Services
         public IEnumerable<EquipmentDto> Pending(string id, bool trackChanges)
         {
             List<EquipmentDto> pendingRequests = _manager.Equipment
-                .GetAllEquipmentsWithRelations(trackChanges)
+                .GetAllEquipmentsWithRelations(equipmentParameter,trackChanges)
                 .Where(e => e.Durum == "Bekliyor")
                 .Select(e => _mapper.Map<EquipmentDto>(e))
                 .ToList();

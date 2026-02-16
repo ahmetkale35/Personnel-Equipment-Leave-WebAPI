@@ -35,15 +35,15 @@ namespace Presentation.Controller
         [Route("GetAllEquipments")]
         public IActionResult GetAllEquipments([FromQuery]EquipmentParameters equipmentParameters)
         {
-            var equipments = _manager.Equipment.GetAllEquipments(equipmentParameters ,false);
+            var equipments = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameters ,false);
             return Ok(equipments);
         }
 
         [HttpGet]
         [Route("GetAllApprovedEquipments")]
-        public IActionResult GetAllApprovedEquipments()
+        public IActionResult GetAllApprovedEquipments([FromQuery] EquipmentParameters equipmentParameters)
         {
-            var equipments = _manager.Equipment.GetAllApprovedEquipments(false);
+            var equipments = _manager.Equipment.GetAllApprovedEquipments(equipmentParameters,false);
             return Ok(equipments);
         }
 

@@ -11,7 +11,7 @@ namespace Services.Contracts
     {
         IEnumerable<EquipmentDto> GetAllEquipments(EquipmentParameters equipmentparameter, bool trackChanges);
 
-        IEnumerable<EquipmentDto> GetAllApprovedEquipments(bool trackChanges);
+        IEnumerable<EquipmentDto> GetAllApprovedEquipments(EquipmentParameters equipmentParameter,bool trackChanges);
 
         List<EquipmentItem> GetAllStocks(bool trackChanges);
         EquipmentDto GetOneEquipmentByID(int id, bool trackChanges);
@@ -26,7 +26,7 @@ namespace Services.Contracts
 
         void CheckEquipmentStock(int id, bool trackChanges);
         void AssignEquipmentToUser(int equipmentId, string userId, bool trackChanges);
-        IEnumerable<EquipmentDto> GetAllEquipmentsWithRelations(bool trackChanges);
+        IEnumerable<EquipmentDto> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges);
         EquipmentDto GetOneEquipmentByIDWithRelations(int id, bool trackChanges);
         
         IEnumerable<EquipmentDto> MyEquipments(string id, bool trackChanges);

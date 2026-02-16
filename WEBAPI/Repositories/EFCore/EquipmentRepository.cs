@@ -29,18 +29,22 @@ namespace Repositories.EFCore
         //        : FindByCondition(e => e.Durum.Equals("Onaylandı", StringComparison.OrdinalIgnoreCase), false);
         //}
 
-        public IEnumerable<EquipmentRequests> GetAllEquipmentsWithRelations(bool trackChanges) =>
+        public IEnumerable<EquipmentRequests> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter, bool trackChanges) =>
     trackChanges
         ? _context.EquipmentRequests
             .Include(er => er.User)           // Talebi yapan kullanıcı
             .Include(er => er.Onaylayan)      // Onaylayan kullanıcı (nullable)
-            .Include(er => er.EquipmentItem)  // Talep edilen ekipman
+            .Include(er => er.EquipmentItem)
+            .Skip((equipmentParameter.PageNumber - 1) * equipmentParameter.PageSize)
+            .Take(equipmentParameter.PageSize)// Talep edilen ekipman
             .ToList()
         : _context.EquipmentRequests
             .AsNoTracking()
             .Include(er => er.User)
             .Include(er => er.Onaylayan)
             .Include(er => er.EquipmentItem)
+            .Skip((equipmentParameter.PageNumber - 1) * equipmentParameter.PageSize)
+            .Take(equipmentParameter.PageSize)
             .ToList();
 
 
