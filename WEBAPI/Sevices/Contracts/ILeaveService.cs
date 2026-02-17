@@ -1,11 +1,12 @@
 ﻿
 using Entities.DataTransferObject;
+using Entities.RequestFeatures;
 
 namespace Services.Contracts
 {
     public interface ILeaveService
     {
-        IEnumerable<LeaveRequestDto> GetAllLeaves(bool trackChanges);
+        IEnumerable<LeaveRequestDto> GetAllLeaves(LeaveParameter leaveParameter, bool trackChanges);
 
         LeaveRequestDto GetOneLeaveByID(int id, bool trackChanges);
 
@@ -14,7 +15,7 @@ namespace Services.Contracts
         void UpdateOneLeave(int id,LeaveRequestDtoForUpdate leaveRequestDto,bool trackChanges);
 
         void DeleteOneLeave(int id,bool trackChanges);
-        IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(bool trackChanges);
+        IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges);
 
         LeaveRequestDto GetOneLeaveByIDWithRelations(int id, bool trackChanges);
 

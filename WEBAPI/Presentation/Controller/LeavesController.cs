@@ -2,6 +2,7 @@
 using Entities.DataTransferObject;
 using Entities.Exceptions.LeaveExceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -31,9 +32,9 @@ namespace Presentation.Controller
        
         [HttpGet]
         [Route("GetAllLeaves")]
-        public IActionResult GetAllLeaves()
+        public IActionResult GetAllLeaves([FromQuery]LeaveParameter leaveParameter)
         {
-            var leaves = _manager.Leave.GetAllLeavesWithRelations(false);
+            var leaves = _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false);
             return Ok(leaves);
         }
 

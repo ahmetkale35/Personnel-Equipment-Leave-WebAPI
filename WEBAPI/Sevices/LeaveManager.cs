@@ -3,6 +3,7 @@ using Entities.DataTransferObject;
 using Entities.Exceptions.LeaveExceptions;
 using Entities.Exceptions.UserExceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
 
@@ -14,6 +15,7 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
+        private LeaveParameter leaveParameter;
 
 
         public LeaveManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
@@ -42,19 +44,19 @@ namespace Services
 
         }
 
-        public IEnumerable<LeaveRequestDto> GetAllLeaves(bool trackChanges)
+        public IEnumerable<LeaveRequestDto> GetAllLeaves(LeaveParameter leaveParameter, bool trackChanges)
         {
             return _mapper.Map<IEnumerable<LeaveRequestDto>>(
-                trackChanges ? _manager.Leave.GetAllLeaves(trackChanges) : _manager.Leave.GetAllLeaves(false));
+                trackChanges ? _manager.Leave.GetAllLeaves(leaveParameter,trackChanges) : _manager.Leave.GetAllLeaves(leaveParameter,false));
 
         }
 
-        public IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(bool trackChanges)
+        public IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
         {
             // AutoMapper ile IEnumerable LeaveRequestDto'ya dönüştürme
             return _mapper.Map<IEnumerable<LeaveRequestDto>>(trackChanges
-                ? _manager.Leave.GetAllLeavesWithRelations(trackChanges)
-                : _manager.Leave.GetAllLeavesWithRelations(false));
+                ? _manager.Leave.GetAllLeavesWithRelations(leaveParameter,trackChanges)
+                : _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false));
         }
 
         public LeaveRequestDto GetOneLeaveByID(int id, bool trackChanges)
@@ -75,7 +77,7 @@ namespace Services
 
         public IEnumerable<LeaveRequestDto> MyRequests(string id, bool trackChanges)
         {
-            List<LeaveRequestDto> myRequests = _manager.Leave.GetAllLeavesWithRelations(trackChanges)
+            List<LeaveRequestDto> myRequests = _manager.Leave.GetAllLeavesWithRelations(leaveParameter, trackChanges)
                  .Where(l => l.UserId == id)
                  .Select(l => _mapper.Map<LeaveRequestDto>(l))
                  .ToList();
@@ -89,7 +91,7 @@ namespace Services
         public IEnumerable<LeaveRequestDto> Pending(string id, bool trackChanges)
         {
             List<LeaveRequestDto> pendingRequests = _manager.Leave
-                .GetAllLeavesWithRelations(trackChanges)
+                .GetAllLeavesWithRelations(leaveParameter ,trackChanges)
                 .Where(l => l.Durum == "Bekliyor")
                 .Select(l => _mapper.Map<LeaveRequestDto>(l))
                 .ToList();
