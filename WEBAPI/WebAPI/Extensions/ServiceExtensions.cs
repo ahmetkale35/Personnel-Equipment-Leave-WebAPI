@@ -85,5 +85,19 @@ namespace WebAPI.Extensions
             services.AddSingleton<LogFilterAttribute>();
             
         }
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            
+             services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .WithExposedHeaders("X-Pagination"); // CORS politikası, "X-Pagination" başlığını istemcinin erişimine açar
+                });
+             });
+        }
     }
 }

@@ -39,6 +39,7 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureActionFilters();
+builder.Services.ConfigureCors();
 
 builder.Services.AddCors(options =>
 {
@@ -79,6 +80,7 @@ if (app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
+app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
