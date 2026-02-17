@@ -8,7 +8,7 @@ namespace Repositories.Contracts
     public interface IEquipmentRepository
     {
 
-        IQueryable<EquipmentRequests> GetAllEquipments(EquipmentParameters equipmentParameter, bool trackChanges);
+        PagedList<EquipmentRequests> GetAllEquipments(EquipmentParameters equipmentParameter, bool trackChanges);
        // IQueryable<EquipmentRequests> GetAllApprovedEquipments(bool trackChanges);
         IQueryable<EquipmentRequests> GetOneEquipmentById(int id, bool trackChanges);
 
@@ -19,7 +19,7 @@ namespace Repositories.Contracts
 
         int stockCount(int id, bool trackChanges);
         // Gets all leaves with their relations (e.g., User and LeaveType)
-        IEnumerable<EquipmentRequests> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges);
+        PagedList<EquipmentRequests> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges);
 
 
         // Gets a single leave by ID with its relations

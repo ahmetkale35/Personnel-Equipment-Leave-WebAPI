@@ -35,8 +35,12 @@ namespace Presentation.Controller
         [Route("GetAllEquipments")]
         public IActionResult GetAllEquipments([FromQuery]EquipmentParameters equipmentParameters)
         {
-            var equipments = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameters ,false);
-            return Ok(equipments);
+            var pagedResults = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameters, false);
+
+            Response.Headers.Add("X-Pagination", System.Text.Json.JsonSerializer.Serialize(pagedResults.metaData));
+            return Ok(pagedResults);
+            //var equipments = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameters ,false);
+            //return Ok(equipments);
         }
 
         [HttpGet]

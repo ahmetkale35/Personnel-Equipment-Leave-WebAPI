@@ -84,11 +84,16 @@ namespace Services
             return _mapper.Map<IEnumerable<EquipmentDto>>(approvedEquipments);
         }
 
-        public IEnumerable<EquipmentDto> GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges)
+        public (IEnumerable<EquipmentDto> equipmentDtos, MetaData metaData) GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges)
         {
-            return _mapper.Map<IEnumerable<EquipmentDto>>(trackChanges
-                ? _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,trackChanges)
-                : _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,false));
+            var booksWithMetaData = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter, trackChanges);
+
+            var booksWithMetaDataDtos = _mapper.Map<IEnumerable<EquipmentDto>>(booksWithMetaData);
+            return (booksWithMetaDataDtos, booksWithMetaData.MetaData);
+
+            //return _mapper.Map<IEnumerable<EquipmentDto>>(trackChanges
+            //    ? _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,trackChanges)
+            //    : _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,false));
         }
 
         public EquipmentDto GetOneEquipmentByID(int id, bool trackChanges)
