@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,26 @@ namespace Repositories.EFCore.Extensions
 {
     public static class LeaveRepositoryExtensions
     {
-        public static IQueryable<Entities.Models.LeaveRequest> Search(this IQueryable<Entities.Models.LeaveRequest> leaves, string searchTerm)
+        public static IQueryable<LeaveRequest> Search(this IQueryable<LeaveRequest> query, string searchTerm)
         {
+            // If the search term is empty, just return the query as-is
             if (string.IsNullOrWhiteSpace(searchTerm))
-                return leaves;
-            var lowerCaseSearchTerm = searchTerm.Trim().ToLower();
-            return leaves.Where(l =>
-                l.User.UserName.ToLower().Contains(lowerCaseSearchTerm) ||
-                l.LeaveType.Ad.ToLower().Contains(lowerCaseSearchTerm) ||
-                l.BaslangicTarihi.ToString("yyyy-MM-dd").Contains(lowerCaseSearchTerm) ||
-                l.BitisTarihi.ToString("yyyy-MM-dd").Contains(lowerCaseSearchTerm));
+                return query;
+
+            var lowerCaseTerm = searchTerm.ToLower();
+
+            // Check if the search term happens to be a valid date
+            bool isDateSearch = DateTime.TryParse(searchTerm, out DateTime searchDate);
+
+            return query.Where(l =>
+                // String comparisons (EF Core can translate these)
+                l.User.UserName.ToLower().Contains(lowerCaseTerm) ||
+                l.LeaveType.Ad.ToLower().Contains(lowerCaseTerm) ||
+
+                // Date comparisons (Compare actual DateTimes, not strings)
+                (isDateSearch && l.BaslangicTarihi.Date == searchDate.Date) ||
+                (isDateSearch && l.BitisTarihi.Date == searchDate.Date)
+            );
         }
     }
 }

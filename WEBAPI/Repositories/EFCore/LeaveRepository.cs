@@ -21,22 +21,24 @@ namespace Repositories.EFCore
             FindAll(trackChanges);
         public IEnumerable<LeaveRequest> GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
         {
-            return trackChanges
-                ? _context.LeaveRequests
-                    .Search(leaveParameter.SearchTerm)
-                    .Include(l => l.User)
-                    .Include(l => l.LeaveType)
-                    .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
-                    .Take(leaveParameter.PageSize)// Talep edilen ekipman
-                    .ToList()
-                : _context.LeaveRequests
-                    .AsNoTracking()
-                    .Search(leaveParameter.SearchTerm)
-                    .Include(l => l.User)
-                    .Include(l => l.LeaveType)
-                    .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
-                    .Take(leaveParameter.PageSize)// Talep edilen ekipman
-                    .ToList();
+            // 1. Start with the base query and includes
+            var query = _context.LeaveRequests
+                .Include(l => l.User)
+                .Include(l => l.LeaveType)
+                .AsQueryable();
+
+            // 2. Conditionally apply AsNoTracking
+            if (!trackChanges)
+            {
+                query = query.AsNoTracking();
+            }
+
+            // 3. Apply search and pagination, then execute with ToList()
+            return query
+                .Search(leaveParameter.SearchTerm)
+                .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
+                .Take(leaveParameter.PageSize) // Talep edilen ekipman (Requested equipment)
+                .ToList();
         }
         public IQueryable<LeaveRequest> GetOneLeaveById(int id, bool trackChanges) => 
             FindByCondition(x => x.id.Equals(id), trackChanges);
