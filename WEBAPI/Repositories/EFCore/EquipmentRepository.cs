@@ -46,25 +46,6 @@ namespace Repositories.EFCore
                 equipmentParameter.PageSize);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             //    trackChanges
             //? _context.EquipmentRequests
             //    .Include(er => er.User)           // Talebi yapan kullanıcı
@@ -89,20 +70,20 @@ namespace Repositories.EFCore
              FindByCondition(x => x.Id.Equals(id), trackChanges);
 
 
-        public EquipmentRequests GetOneEquipmentByIDWithRelations(int id, bool trackChanges)
+        public EquipmentRequests? GetOneEquipmentByIDWithRelations(int id, bool trackChanges)
         {
-            return trackChanges
-                ? _context.EquipmentRequests
-                    .Include(er => er.User)            // Talebi yapan kullanıcı
-                    .Include(er => er.Onaylayan)       // Onaylayan kullanıcı (nullable olabilir)
-                    .Include(er => er.EquipmentItem)   // Talep edilen ekipman
-                    .FirstOrDefault(er => er.Id == id)
-                : _context.EquipmentRequests
-                    .AsNoTracking()
-                    .Include(er => er.User)
-                    .Include(er => er.Onaylayan)
-                    .Include(er => er.EquipmentItem)
-                    .FirstOrDefault(er => er.Id == id);
+            var query = _context.EquipmentRequests
+                .Include(er => er.User)             // Talebi yapan kullanıcı
+                .Include(er => er.Onaylayan)        // Onaylayan kullanıcı (nullable olabilir)
+                .Include(er => er.EquipmentItem)    // Talep edilen ekipman
+                .AsQueryable();
+
+            if (!trackChanges)
+            {
+                query = query.AsNoTracking();
+            }
+
+            return query.FirstOrDefault(er => er.Id == id);
         }
 
 
