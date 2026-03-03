@@ -3,6 +3,7 @@ using Entities.Models;
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
+using Repositories.EFCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Repositories.EFCore
         {
             return trackChanges
                 ? _context.LeaveRequests
+                    .Search(leaveParameter.SearchTerm)
                     .Include(l => l.User)
                     .Include(l => l.LeaveType)
                     .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
@@ -29,6 +31,7 @@ namespace Repositories.EFCore
                     .ToList()
                 : _context.LeaveRequests
                     .AsNoTracking()
+                    .Search(leaveParameter.SearchTerm)
                     .Include(l => l.User)
                     .Include(l => l.LeaveType)
                     .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
