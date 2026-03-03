@@ -42,18 +42,19 @@ namespace Repositories.EFCore
         }
         public IQueryable<LeaveRequest> GetOneLeaveById(int id, bool trackChanges) => 
             FindByCondition(x => x.id.Equals(id), trackChanges);
-        public LeaveRequest GetOneLeaveByIDWithRelations(int id, bool trackChanges)
+        public LeaveRequest? GetOneLeaveByIDWithRelations(int id, bool trackChanges)
         {
-            return trackChanges
-        ? _context.LeaveRequests
-            .Include(lr => lr.User)
-            .Include(lr => lr.LeaveType)
-            .FirstOrDefault(lr => lr.id == id)
-        : _context.LeaveRequests
-            .AsNoTracking()
-            .Include(lr => lr.User)
-            .Include(lr => lr.LeaveType)
-            .FirstOrDefault(lr => lr.id == id);
+            var query = _context.LeaveRequests
+                .Include(lr => lr.User)
+                .Include(lr => lr.LeaveType)
+                .AsQueryable();
+
+            if (!trackChanges)
+            {
+                query = query.AsNoTracking();
+            }
+
+            return query.FirstOrDefault(lr => lr.id == id);
         }
         public void UpdateOneLeave(LeaveRequest leave) => Update(leave);
 
