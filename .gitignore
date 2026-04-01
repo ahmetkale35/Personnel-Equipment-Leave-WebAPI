@@ -474,3 +474,14 @@ WEBAPI/WebAPI/obj/project.assets.json
 WEBAPI/WebAPI/obj/project.nuget.cache
 WEBAPI/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json
 WEBAPI/WebAPI/obj/WebAPI.csproj.nuget.g.props
+/WEBAPI/Entities/bin/Debug/net6.0
+/WEBAPI/Entities/obj
+/WEBAPI/Presentation/bin/Debug/net6.0
+/WEBAPI/Presentation/obj
+/WEBAPI/Repositories/bin/Debug/net6.0
+/WEBAPI/Sevices/bin/Debug/net6.0
+/WEBAPI/Sevices/obj
+/WEBAPI/WebAPI/bin/Debug/net6.0
+/WEBAPI/WebAPI/internal_logs
+/WEBAPI/WebAPI/obj/Debug/net6.0
+/WEBAPI/WebAPI/obj
