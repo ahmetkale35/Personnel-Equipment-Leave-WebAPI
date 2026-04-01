@@ -34,8 +34,7 @@ namespace Repositories.EFCore
         {
 
             var equipment = FindAll(trackChanges)
-                .Search(equipmentParameter.SearchTerm) 
-                .Sort(equipmentParameter.OrderBy)
+                .Search(equipmentParameter.SearchTerm)
                 .Include(er => er.User)            // Talebi yapan kullanıcı
                 .Include(er => er.Onaylayan)       // Onaylayan kullanıcı (nullable olabilir)
                 .Include(er => er.EquipmentItem)   // Talep edilen ekipman
