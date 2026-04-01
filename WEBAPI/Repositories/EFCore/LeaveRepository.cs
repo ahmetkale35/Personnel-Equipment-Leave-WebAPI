@@ -36,6 +36,7 @@ namespace Repositories.EFCore
             // 3. Apply search and pagination, then execute with ToList()
             return query
                 .Search(leaveParameter.SearchTerm)
+                .Sort(leaveParameter.OrderBy)
                 .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
                 .Take(leaveParameter.PageSize) // Talep edilen ekipman (Requested equipment)
                 .ToList();

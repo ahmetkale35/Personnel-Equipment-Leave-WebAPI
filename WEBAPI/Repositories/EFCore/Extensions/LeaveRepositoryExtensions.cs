@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Dynamic.Core;
 
 namespace Repositories.EFCore.Extensions
 {
@@ -30,6 +31,22 @@ namespace Repositories.EFCore.Extensions
                 (isDateSearch && l.BaslangicTarihi.Date == searchDate.Date) ||
                 (isDateSearch && l.BitisTarihi.Date == searchDate.Date)
             );
+        }
+
+        public static IQueryable<LeaveRequest> Sort(this IQueryable<LeaveRequest> leaves, string orderByQueryString)
+        {
+            if (string.IsNullOrWhiteSpace(orderByQueryString))
+                return leaves.OrderBy(b => b.id);
+
+            var orderQuery = OrderQueryBuilder
+                .CreateOrderQuery<EquipmentRequests>(orderByQueryString);
+
+            if (orderQuery is null)
+                return leaves.OrderBy(b => b.id);
+
+            return leaves.OrderBy(orderQuery);
+
+
         }
     }
 }

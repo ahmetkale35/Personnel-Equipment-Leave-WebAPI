@@ -9,5 +9,10 @@ namespace Entities.RequestFeatures
     public class LeaveParameter : RequestParameters
     {
         public String? SearchTerm { get; set; }
+
+        public LeaveParameter()
+        {
+            OrderBy = "Id";
+        }
     }
 }
