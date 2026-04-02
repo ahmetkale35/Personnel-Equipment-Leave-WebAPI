@@ -24,5 +24,8 @@ namespace Entities.RequestFeatures
         }
 
         public String? OrderBy { get; set; }
+
+        // Fields to be selected in the response, e.g., "name,age"
+        public String? Fields { get; set; }
     }
 }

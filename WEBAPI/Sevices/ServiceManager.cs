@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Repositories.Contracts;
 using Services.Contracts;
 using Microsoft.Extensions.Configuration;
+using Entities.DataTransferObject.EquipmentDTO;
 
 
 namespace Services
@@ -20,7 +21,8 @@ namespace Services
             ILoggerService logger,
             IMapper mapper,
             IConfiguration configuration, // IConfiguration'ı geçiyoruz
-            UserManager<User> userManager) // UserManager<User> bağımlılığını alıyoruz
+            UserManager<User> userManager, 
+            IDataShapper<EquipmentDto> shapper) // UserManager<User> bağımlılığını alıyoruz
             // IEquipmentService equipmentService)   // Lazy yükleme ile EquipmentService'i başlatıyoruz
 
 
@@ -35,7 +37,7 @@ namespace Services
             //_equipmentService = equipmentService;
 
             _equipmentService = new Lazy<IEquipmentService>(() =>
-                new EquipmentManager(repositoryManager, logger, mapper)); // Lazy yükleme ile EquipmentService'i başlatıyoruz
+                new EquipmentManager(repositoryManager, logger, mapper,shapper)); // Lazy yükleme ile EquipmentService'i başlatıyoruz
         }
         
         public ILeaveService Leave => _leaveService.Value;

@@ -1,4 +1,5 @@
 ﻿
+using System.Dynamic;
 using System.Threading.Tasks;
 using Entities.DataTransferObject.EquipmentDTO;
 using Entities.Models;
@@ -26,7 +27,7 @@ namespace Services.Contracts
 
         void CheckEquipmentStock(int id, bool trackChanges);
         void AssignEquipmentToUser(int equipmentId, string userId, bool trackChanges);
-        (IEnumerable<EquipmentDto> equipmentDtos , MetaData metaData) GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges);
+        (IEnumerable<ExpandoObject> equipmentDtos , MetaData metaData) GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges);
         EquipmentDto GetOneEquipmentByIDWithRelations(int id, bool trackChanges);
         
         IEnumerable<EquipmentDto> MyEquipments(string id, bool trackChanges);
