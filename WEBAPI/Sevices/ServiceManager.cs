@@ -23,7 +23,7 @@ namespace Services
             IMapper mapper,
             IConfiguration configuration, // IConfiguration'ı geçiyoruz
             UserManager<User> userManager, 
-            IDataShapper<EquipmentDto> shapperDto,
+            IDataShapper<EquipmentDto> shapperEquipment,
             IDataShapper<LeaveRequestDto> shapperLeave)
 
 
@@ -41,7 +41,7 @@ namespace Services
             //_equipmentService = equipmentService;
 
             _equipmentService = new Lazy<IEquipmentService>(() =>
-                new EquipmentManager(repositoryManager, logger, mapper, shapperDto)); // Lazy yükleme ile EquipmentService'i başlatıyoruz
+                new EquipmentManager(repositoryManager, logger, mapper, shapperEquipment)); // Lazy yükleme ile EquipmentService'i başlatıyoruz
         }
         
         public ILeaveService Leave => _leaveService.Value;
