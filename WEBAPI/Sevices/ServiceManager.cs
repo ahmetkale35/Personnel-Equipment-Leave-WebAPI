@@ -5,6 +5,7 @@ using Repositories.Contracts;
 using Services.Contracts;
 using Microsoft.Extensions.Configuration;
 using Entities.DataTransferObject.EquipmentDTO;
+using Entities.DataTransferObject;
 
 
 namespace Services
@@ -22,14 +23,17 @@ namespace Services
             IMapper mapper,
             IConfiguration configuration, // IConfiguration'ı geçiyoruz
             UserManager<User> userManager, 
-            IDataShapper<EquipmentDto> shapper) // UserManager<User> bağımlılığını alıyoruz
-            // IEquipmentService equipmentService)   // Lazy yükleme ile EquipmentService'i başlatıyoruz
+            IDataShapper<EquipmentDto> shapperDto,
+            IDataShapper<LeaveRequestDto> shapperLeave)
+
+
+        // IEquipmentService equipmentService)   // Lazy yükleme ile EquipmentService'i başlatıyoruz
 
 
         {
             // Lazy yükleme ile LeaveService'i başlatıyoruz
             _leaveService = new Lazy<ILeaveService>(() => 
-            new LeaveManager(repositoryManager, logger, mapper));
+            new LeaveManager(repositoryManager, logger, mapper, shapperLeave));
 
 
             _authenticationService = new Lazy<IAuthenticationService>(() =>
@@ -37,7 +41,7 @@ namespace Services
             //_equipmentService = equipmentService;
 
             _equipmentService = new Lazy<IEquipmentService>(() =>
-                new EquipmentManager(repositoryManager, logger, mapper,shapper)); // Lazy yükleme ile EquipmentService'i başlatıyoruz
+                new EquipmentManager(repositoryManager, logger, mapper, shapperDto)); // Lazy yükleme ile EquipmentService'i başlatıyoruz
         }
         
         public ILeaveService Leave => _leaveService.Value;

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
 using Services.Contracts;
+using System.Linq.Dynamic.Core;
 using System.Security.Claims;
 
 
@@ -34,8 +35,9 @@ namespace Presentation.Controller
         [Route("GetAllLeaves")]
         public IActionResult GetAllLeaves([FromQuery]LeaveParameter leaveParameter)
         {
-            var leaves = _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false);
-            return Ok(leaves);
+            var pagedResult = _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false);
+            Response.Headers.Add("X-Pagination", System.Text.Json.JsonSerializer.Serialize(pagedResult.metaData));
+            return Ok(pagedResult);
         }
 
         [Authorize]

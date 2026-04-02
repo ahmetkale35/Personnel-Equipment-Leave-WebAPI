@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using Entities.DataTransferObject;
+using Entities.DataTransferObject.EquipmentDTO;
 using Entities.Exceptions.LeaveExceptions;
 using Entities.Exceptions.UserExceptions;
 using Entities.Models;
 using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
+using System.Dynamic;
 
 namespace Services
 {
@@ -16,13 +18,16 @@ namespace Services
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
         private LeaveParameter leaveParameter;
+        private readonly IDataShapper<LeaveRequestDto> _shapper;
 
 
-        public LeaveManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
+
+        public LeaveManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper, IDataShapper<LeaveRequestDto> shapper)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
+            _shapper = shapper;
         }
 
         public LeaveRequestDto CreateOneLeave(LeaveRequestDtoInsertion leaveRequestDtoIns)
@@ -51,12 +56,17 @@ namespace Services
 
         }
 
-        public IEnumerable<LeaveRequestDto> GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
+        public (IEnumerable<ExpandoObject> leaveDtos, MetaData metaData) GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
         {
-            // AutoMapper ile IEnumerable LeaveRequestDto'ya dönüştürme
-            return _mapper.Map<IEnumerable<LeaveRequestDto>>(trackChanges
-                ? _manager.Leave.GetAllLeavesWithRelations(leaveParameter,trackChanges)
-                : _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false));
+            var leavesWithhMetaData = _manager.Leave.GetAllLeavesWithRelations(leaveParameter,trackChanges);
+
+            var leavesWithMetaDataDtos = _mapper.Map<IEnumerable<LeaveRequestDto>>(leavesWithhMetaData);            // AutoMapper ile IEnumerable LeaveRequestDto'ya dönüştürme
+            var shapedData = _shapper.ShapeData(leavesWithMetaDataDtos, leaveParameter.Fields);
+            return (leaveDtos: shapedData, metaData: leavesWithhMetaData.MetaData);
+
+            //return _mapper.Map<IEnumerable<LeaveRequestDto>>(trackChanges
+            //    ? _manager.Leave.GetAllLeavesWithRelations(leaveParameter,trackChanges)
+            //    : _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false));
         }
 
         public LeaveRequestDto GetOneLeaveByID(int id, bool trackChanges)

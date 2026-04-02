@@ -1,4 +1,6 @@
-﻿using Entities.Models;
+﻿using Entities.DataTransferObject;
+using Entities.DataTransferObject.EquipmentDTO;
+using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -114,7 +116,10 @@ namespace WebAPI.Extensions
         // Veri şekillendirme (Data Shaping) için gerekli servisleri ekler
         public static void ConfigureDataShapper(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IDataShapper<>), typeof(DataShapper<>));
+            services.AddScoped<IDataShapper<LeaveRequestDto>, DataShapper<LeaveRequestDto>>();
+            services.AddScoped<IDataShapper<EquipmentDto>, DataShapper<EquipmentDto>>();
+
+            //services.AddScoped(typeof(IDataShapper<>), typeof(DataShapper<>));
         }
     }
 }

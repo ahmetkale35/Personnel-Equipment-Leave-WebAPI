@@ -15,7 +15,7 @@ namespace Repositories.Contracts
 
 
         // Gets all leaves with their relations (e.g., User and LeaveType)
-        IEnumerable<LeaveRequest> GetAllLeavesWithRelations(LeaveParameter leaveParameter,bool trackChanges);
+        PagedList<LeaveRequest> GetAllLeavesWithRelations(LeaveParameter leaveParameter,bool trackChanges);
 
 
         // Gets a single leave by ID with its relations
