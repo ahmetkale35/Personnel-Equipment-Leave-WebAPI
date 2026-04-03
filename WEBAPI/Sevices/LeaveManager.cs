@@ -12,15 +12,13 @@ using System.Dynamic;
 namespace Services
 {
     public class LeaveManager : ILeaveService
-    {
 
+    {
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
         private LeaveParameter leaveParameter;
         private readonly IDataShapper<LeaveRequestDto> _shapper;
-
-
 
         public LeaveManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper, IDataShapper<LeaveRequestDto> shapper)
         {
@@ -46,34 +44,26 @@ namespace Services
 
             _manager.Leave.DeleteOneLeave(entity);
             _manager.Save();
-
         }
 
         public IEnumerable<LeaveRequestDto> GetAllLeaves(LeaveParameter leaveParameter, bool trackChanges)
         {
             return _mapper.Map<IEnumerable<LeaveRequestDto>>(
                 trackChanges ? _manager.Leave.GetAllLeaves(leaveParameter,trackChanges) : _manager.Leave.GetAllLeaves(leaveParameter,false));
-
         }
 
         public (IEnumerable<ExpandoObject> leaveDtos, MetaData metaData) GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
         {
             var leavesWithhMetaData = _manager.Leave.GetAllLeavesWithRelations(leaveParameter,trackChanges);
-
-            var leavesWithMetaDataDtos = _mapper.Map<IEnumerable<LeaveRequestDto>>(leavesWithhMetaData);            // AutoMapper ile IEnumerable LeaveRequestDto'ya dönüştürme
+            var leavesWithMetaDataDtos = _mapper.Map<IEnumerable<LeaveRequestDto>>(leavesWithhMetaData);
             var shapedData = _shapper.ShapeData(leavesWithMetaDataDtos, leaveParameter.Fields);
             return (leaveDtos: shapedData, metaData: leavesWithhMetaData.MetaData);
-
-            //return _mapper.Map<IEnumerable<LeaveRequestDto>>(trackChanges
-            //    ? _manager.Leave.GetAllLeavesWithRelations(leaveParameter,trackChanges)
-            //    : _manager.Leave.GetAllLeavesWithRelations(leaveParameter,false));
         }
 
         public LeaveRequestDto GetOneLeaveByID(int id, bool trackChanges)
         {
             return _mapper.Map<LeaveRequestDto>(
                 _manager.Leave.GetOneLeaveById(id, trackChanges).FirstOrDefault());
-
         }
 
         public LeaveRequestDto GetOneLeaveByIDWithRelations(int id, bool trackChanges)
@@ -94,8 +84,6 @@ namespace Services
             if (myRequests.Count == 0)
                 throw new UserHasNoLeaveRequestsException(id);
             return myRequests;
-
-
         }
 
         public IEnumerable<LeaveRequestDto> Pending(string id, bool trackChanges)
@@ -119,17 +107,7 @@ namespace Services
 
             if (leaveRequestDto == null)
                 throw new ArgumentNullException(nameof(leaveRequestDto), "Leave request cannot be null");
-
-
-            /// Alan güncellemeleri Manuel
-            //entity.BaslangicTarihi = leaveRequest.BaslangicTarihi;
-            //entity.BitisTarihi = leaveRequest.BitisTarihi;
-            //entity.Aciklama = leaveRequest.Aciklama;
-            //entity.Durum = leaveRequest.Durum;
-            //entity.LeaveTypeId = leaveRequest.LeaveTypeId;
-            //entity.UserId = leaveRequest.UserId;
-
-            // AutoMapper ile güncelleme
+    
             _mapper.Map(leaveRequestDto, entity);
             _manager.Leave.UpdateOneLeave(entity);
             _manager.Save();

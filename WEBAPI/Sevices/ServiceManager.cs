@@ -15,20 +15,16 @@ namespace Services
         // Lazy yükleme kullanarak servisleri oluşturuyoruz
         private readonly Lazy<ILeaveService> _leaveService;
         private readonly Lazy<IAuthenticationService> _authenticationService;
-       // private readonly IEquipmentService _equipmentService;
         private readonly Lazy<IEquipmentService> _equipmentService;
 
-        public ServiceManager(IRepositoryManager repositoryManager,    // Constructor injection ile bağımlılıkları alıyoruz
+        // Constructor injection ile bağımlılıkları alıyoruz
+        public ServiceManager(IRepositoryManager repositoryManager,    
             ILoggerService logger,
             IMapper mapper,
             IConfiguration configuration, // IConfiguration'ı geçiyoruz
             UserManager<User> userManager, 
             IDataShapper<EquipmentDto> shapperEquipment,
             IDataShapper<LeaveRequestDto> shapperLeave)
-
-
-        // IEquipmentService equipmentService)   // Lazy yükleme ile EquipmentService'i başlatıyoruz
-
 
         {
             // Lazy yükleme ile LeaveService'i başlatıyoruz
@@ -37,7 +33,7 @@ namespace Services
 
 
             _authenticationService = new Lazy<IAuthenticationService>(() =>
-                new AuthenticationManager(mapper, userManager, configuration, logger)); // IConfiguration'ı null olarak geçiyoruz, gerçek uygulamada uygun şekilde geçmelisiniz
+                new AuthenticationManager(mapper, userManager, configuration, logger)); // IConfiguration'ı null olarak geçiyoruz, gerçek uygulamada uygun şekilde geçilmeli
             //_equipmentService = equipmentService;
 
             _equipmentService = new Lazy<IEquipmentService>(() =>
