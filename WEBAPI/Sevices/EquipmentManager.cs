@@ -8,6 +8,7 @@ using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
 using SQLitePCL;
+using System.Dynamic;
 using System.Security.Claims;
 
 namespace Services
@@ -18,12 +19,14 @@ namespace Services
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
         private EquipmentParameters equipmentParameter;
+        private readonly IDataShapper<EquipmentDto> _shaper;
 
-        public EquipmentManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
+        public EquipmentManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper, IDataShapper<EquipmentDto> shaper)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
+            _shaper = shaper;
         }
 
         public bool IsEquipmentExists(int equipmentId, bool trackChanges)
@@ -84,12 +87,14 @@ namespace Services
             return _mapper.Map<IEnumerable<EquipmentDto>>(approvedEquipments);
         }
 
-        public (IEnumerable<EquipmentDto> equipmentDtos, MetaData metaData) GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges)
+        public (IEnumerable<ExpandoObject> equipmentDtos, MetaData metaData) GetAllEquipmentsWithRelations(EquipmentParameters equipmentParameter,bool trackChanges)
         {
-            var booksWithMetaData = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter, trackChanges);
+            var equipmentsWithMetaData = _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter, trackChanges);
 
-            var booksWithMetaDataDtos = _mapper.Map<IEnumerable<EquipmentDto>>(booksWithMetaData);
-            return (booksWithMetaDataDtos, booksWithMetaData.MetaData);
+            var equipmentsWithMetaDataDtos = _mapper.Map<IEnumerable<EquipmentDto>>(equipmentsWithMetaData);
+            var shapedData = _shaper.ShapeData(equipmentsWithMetaDataDtos, equipmentParameter.Fields);
+            return (equipmentDtos: shapedData, metaData: equipmentsWithMetaData.MetaData);
+            //return (booksWithMetaDataDtos, booksWithMetaData.MetaData);
 
             //return _mapper.Map<IEnumerable<EquipmentDto>>(trackChanges
             //    ? _manager.Equipment.GetAllEquipmentsWithRelations(equipmentParameter,trackChanges)

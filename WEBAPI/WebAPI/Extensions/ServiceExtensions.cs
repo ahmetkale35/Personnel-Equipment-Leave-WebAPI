@@ -1,4 +1,6 @@
-﻿using Entities.Models;
+﻿using Entities.DataTransferObject;
+using Entities.DataTransferObject.EquipmentDTO;
+using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +16,14 @@ namespace WebAPI.Extensions
 {
     public static class ServiceExtensions
     {
+        // SQL veritabanı bağlamını ekler
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<RepositoryContext>(options =>
                 options.UseSqlite(configuration.GetConnectionString("SqlConnection")));
         }
 
+        // RepositoryManager'ı ekler
         public static void ConfigureRepositoryManager(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
@@ -29,15 +33,20 @@ namespace WebAPI.Extensions
         //{
         //    services.AddScoped<IEquipmentService, EquipmentManager>();
         //}
+
+        // ServiceManager'ı ekler
         public static void ConfigureServiceManager(this IServiceCollection services)
         {
             services.AddScoped<IServiceManager, ServiceManager>();
         }
+
+        // Logger servisini ekler
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerService, LoggerManager>();
         }
 
+        // Identity (Kullanıcı yönetimi) yapılandırması
         public static void ConfigureIdentity(this IServiceCollection services)
         {
             services.AddIdentity<User, IdentityRole>(options =>
@@ -54,6 +63,7 @@ namespace WebAPI.Extensions
         }
 
 
+        // JWT (JSON Web Token) kimlik doğrulamasını yapılandırır
         public static void ConfigureJWT(this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -79,25 +89,37 @@ namespace WebAPI.Extensions
         }
 
 
+        // Action filtrelerini ekler
         public static void ConfigureActionFilters(this IServiceCollection services)
         {
             services.AddScoped<ValidationActionAttribute>();
             services.AddSingleton<LogFilterAttribute>();
-            
+
         }
+
+        // CORS (Cross-Origin Resource Sharing) politikası ekler
         public static void ConfigureCors(this IServiceCollection services)
         {
-            
-             services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll", builder =>
-                {
-                    builder.AllowAnyOrigin()
-                           .AllowAnyMethod()
-                           .AllowAnyHeader()
-                           .WithExposedHeaders("X-Pagination"); // CORS politikası, "X-Pagination" başlığını istemcinin erişimine açar
-                });
-             });
+
+            services.AddCors(options =>
+           {
+               options.AddPolicy("AllowAll", builder =>
+               {
+                   builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .WithExposedHeaders("X-Pagination"); // CORS politikası, "X-Pagination" başlığını istemcinin erişimine açar
+               });
+           });
+        }
+
+        // Veri şekillendirme (Data Shaping) için gerekli servisleri ekler
+        public static void ConfigureDataShapper(this IServiceCollection services)
+        {
+            services.AddScoped<IDataShapper<LeaveRequestDto>, DataShapper<LeaveRequestDto>>();
+            services.AddScoped<IDataShapper<EquipmentDto>, DataShapper<EquipmentDto>>();
+
+            //services.AddScoped(typeof(IDataShapper<>), typeof(DataShapper<>));
         }
     }
 }

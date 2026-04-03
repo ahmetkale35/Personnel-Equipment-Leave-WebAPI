@@ -19,7 +19,7 @@ namespace Repositories.EFCore
         public void DeleteOneLeave(LeaveRequest leave) => Delete(leave);
         public IQueryable<LeaveRequest> GetAllLeaves(LeaveParameter leaveParameter, bool trackChanges) => 
             FindAll(trackChanges);
-        public IEnumerable<LeaveRequest> GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
+        public PagedList<LeaveRequest> GetAllLeavesWithRelations(LeaveParameter leaveParameter, bool trackChanges)
         {
             // 1. Start with the base query and includes
             var query = _context.LeaveRequests
@@ -32,14 +32,25 @@ namespace Repositories.EFCore
             {
                 query = query.AsNoTracking();
             }
-
-            // 3. Apply search and pagination, then execute with ToList()
-            return query
+            var leaves = query
                 .Search(leaveParameter.SearchTerm)
                 .Sort(leaveParameter.OrderBy)
                 .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
                 .Take(leaveParameter.PageSize) // Talep edilen ekipman (Requested equipment)
                 .ToList();
+
+            return PagedList<LeaveRequest>.ToPagedList(leaves,
+                leaveParameter.PageNumber,
+                leaveParameter.PageSize);
+
+
+            //// 3. Apply search and pagination, then execute with ToList()
+            //return query
+            //    .Search(leaveParameter.SearchTerm)
+            //    .Sort(leaveParameter.OrderBy)
+            //    .Skip((leaveParameter.PageNumber - 1) * leaveParameter.PageSize)
+            //    .Take(leaveParameter.PageSize) // Talep edilen ekipman (Requested equipment)
+            //    .ToList();
         }
         public IQueryable<LeaveRequest> GetOneLeaveById(int id, bool trackChanges) => 
             FindByCondition(x => x.id.Equals(id), trackChanges);
